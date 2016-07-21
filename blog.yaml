@@ -1,8 +1,9 @@
-application: blog
+application: concrete-spider-137923 
 version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
+module: default
 
 handlers:
 - url: /static

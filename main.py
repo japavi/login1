@@ -187,8 +187,8 @@ class Register(Signup):
             u = User.register(self.username, self.password, self.email)
             u.put()
 
-            self.login(u)
-            self.redirect('/blog/welcome')
+            self.login(u, False)
+            self.redirect('/blog/welcome?username=' + self.username)
 
 class Login(BaseHandler):
     def get(self):
@@ -225,8 +225,10 @@ class Welcome(BaseHandler):
 		logging.error(logged_username)
 
 		username = self.request.get('username')
-		if valid_username(username) and username == logged_username:
+		if  valid_username(username) and username == logged_username:
 			self.render('welcome.html', username = logged_username)
+		elif logged_username == '' or logged_username == None:
+			self.redirect('/blog/login')
 		else:
 			error_username = 'Pillin, %s no es el usuario logado!! El usuario logado es %s' % (username, logged_username)
 			self.render('welcome.html', username = logged_username, error_username = error_username)
