@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <link type="text/css" rel="stylesheet" href="/static/main.css" />
 
   <title>CS 253 Blog</title>
 </head>
 
 <body>
-  <a href="/" class="main-title">
-    CS 253 Blog
-  </a>
+  <section>
+    <header>
+      <a href="/" class="main-title">
+        CS 253 Blog
+      </a>
 
-  <div class="login-area">
-    {% if user %}
-      {{user.name}} (<a class="login-link" href="/blog/logout">logout</a>)
-    {% else %}
-      <a class="login-link" href="/blog/login">login</a>
-      |
-      <a class="login-link" href="/blog/signup">signup</a>
-    {% endif %}
-  </div>
+      <div class="login-area">
+        {% if user %}
+          {{user.name}} (<a class="login-link" href="/blog/logout">logout</a>)
+        {% else %}
+          <a class="login-link" href="/blog/login">login</a>
+          |
+          <a class="login-link" href="/blog/signup">signup</a>
+        {% endif %}
+      </div>
+    </header>
 
-  <div id="content">
-  {% block content %}
-  {% endblock %}
-  </div>
+    <div id="content">
+    {% block content %}
+    {% endblock %}
+    </div>
+  </section>
+  <footer>
+      <div class="footer-area">
+          <p class="">Powered by <a class="login-link" href="mailto:javier.paradela.vila@gmail.com">javier</a>
+      </div>
+  </footer>
 </body>
 
 </html>
