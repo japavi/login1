@@ -86,6 +86,11 @@ class Welcome(BaseHandler):
 		else:
 			self.redirect('/blog/signup')
 
+class Init(BaseHandler):
+	def get(self):
+		self.render('index.html')
+
 app = webapp2.WSGIApplication([
+    ('/', Init),
     ('/blog/signup', Signup),
     ('/blog/welcome', Welcome)], debug=True)
